@@ -1,0 +1,31 @@
+<div ng-controller="MediaController as $ctrl">
+    <script type="text/ng-template" id="media.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Media Lib</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+           
+			<div class="row">
+            	<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="item in $ctrl.items">
+                	<a class="thumbnail" href="#">
+                   	 <img  class="img-responsive" style="max-height:122px;" ng-src="/uploads/{{$ctrl.type}}/400x300{{item.fileName}}.png">
+                	</a>
+					<span>{{item}}</span>
+            	</div>
+			</div>
+            Selected: <b>{{ $ctrl.selected.item }}</b>
+			<input name="file" type="file" id="inputData"><button ng-click="$ctrl.upload()">Upload</button>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg', 'images')">Images</button>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg', 'videos')">Videos</button>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg', 'docs')">Docs</button>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.toggleAnimation()">Toggle Animation ({{ $ctrl.animationsEnabled }})</button>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>
+    <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
+</div>

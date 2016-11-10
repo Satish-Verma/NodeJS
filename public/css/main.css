@@ -1,0 +1,504 @@
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+html {
+    background-color: #fafafa;
+    color: #0a0a0a;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    min-height: 100%;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   Temporary - remove this styles
+   -------------------------------------------------------------------------- */
+
+.btn-options {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.btn-temporary-container {
+    background-color: rgba(0,0,0,.2);
+    display: none;
+    padding:  24px;
+    position: absolute;
+    bottom: 0;
+    top: 40px;
+    left: 20px;
+    z-index: 9999;
+    height: 200px;
+    width: 200px;
+}
+
+.btn-temporary {
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    display: block;
+    margin-bottom: 8px;
+    outline: 0;
+    padding: 12px;
+}
+
+.btn-temporary:hover {
+    background-color: #808080;
+}
+
+
+/* --------------------------------------------------------------------------
+   App main layout
+   -------------------------------------------------------------------------- */
+
+.l-app-body {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+// Remove below l-app-body styles, this is just for presentation
+// .l-app-body {
+//     width: 1280px;
+//     height: 800px;
+//     border-radius: 1px;
+//     box-shadow: 0 0 0 30px rgba(0,0,0,.9);
+//     margin: auto;
+//     margin-left: 80px;
+// }
+
+.l-app-container {
+    display: flex;
+    height: 100%;
+}
+
+.l-app-container__left {
+    width: 62%;
+}
+
+.l-app-container__right {
+    width: 38%;
+}
+
+
+/* --------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+
+.c-meeting-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-between;
+    padding: 64px 0 128px 64px;
+    width: 100%;
+}
+
+.c-meeting-info--no-next-meeting {
+    justify-content: center;
+}
+
+/**
+ * Room
+ */
+
+.c-meeting-info__room-name {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 48px;
+    margin-left: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.c-meeting-info__status {
+    font-size: 120px;
+    font-weight: 300;
+    letter-spacing: -4px;
+    line-height: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.c-meeting-info__status--available {
+    color: #008560;
+}
+
+.c-meeting-info__status--occupied {
+    color: #da1e33;
+}
+
+.c-meeting-info__btn {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,.15);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-top: 16px;
+    outline: 0;
+    padding: 16px 30px;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.c-meeting-info__btn:active {
+    background-color: #e0e0e0;
+}
+
+
+/**
+ * Meeting
+ */
+
+.c-meeting-info__title {
+    font-size: 32px;
+    line-height: 32px;
+    margin-bottom: 4px;
+    max-height: 64px;
+    overflow: hidden;
+    padding-right: 32px;
+}
+
+.c-meeting-info__description {
+    color: #3c3c3c;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 24px;
+    max-height: 96px;
+    overflow: hidden;
+    padding-right: 32px;
+}
+
+.c-meeting-info__details {
+    border-bottom: 1px solid #acadaf;
+    border-top: 1px solid #acadaf;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.c-meeting-info__row {
+    display: flex;
+    height: 80px;
+}
+
+.c-meeting-info__row--duration {
+    border-bottom: 1px solid #acadaf;
+    align-items: center;
+}
+
+.c-meeting-info__row--originator {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.c-meeting-info__duration {
+    font-size: 54px;
+    font-weight: 500;
+    padding-left: 70px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.c-meeting-info__duration:before {
+    background-image: url("../assets/ic-clock.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    height: 48px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 70px;
+}
+
+.c-meeting-info__counter {
+    border-left: 1px solid #acadaf;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin-left: 20px;
+    padding-left: 20px;
+    white-space: nowrap;
+}
+
+.c-meeting-info__counter__label {
+    color: #4d4d4d;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.c-meeting-info__counter__time {
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.c-meeting-info__originator {
+    position: relative;
+    padding-left: 70px;
+}
+
+.c-meeting-info__originator:before {
+    background-image: url("../assets/ic-avatar.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: '';
+    height: 48px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 70px;
+}
+
+.c-meeting-info__originator__label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.c-meeting-info__originator__name {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 20px;
+    position: relative;
+}
+
+
+/* --------------------------------------------------------------------------
+   Schedule
+   -------------------------------------------------------------------------- */
+
+.c-schedule {
+    background-color: #eeeeee;
+    border-left: 1px solid #acadaf;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+/**
+ * Header
+ */
+
+.c-schedule__header {
+    align-items: center;
+    background-color: #fafafa;
+    border-bottom: 1px solid #acadaf;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,.1);
+    display: flex;
+    height: 68px;
+    width: 100%;
+}
+
+.c-schedule__header__date {
+    flex: 1;
+    font-size: 20px;
+    text-align: center;
+}
+
+.c-schedule__header__arrow {
+    background-color: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    height: 100%;
+    outline: 0;
+    width: 80px;
+}
+
+.c-schedule__header__arrow:active {
+    background-color: #e0e0e0;
+}
+
+.c-schedule__header__arrow--left {
+    background-image: url("../assets/ic-arr-left.svg");
+    left: 0;
+}
+
+.c-schedule__header__arrow--right {
+    background-image: url("../assets/ic-arr-right.svg");
+    right: 0;
+}
+
+/**
+ * Content
+ */
+
+.c-schedule__content {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+/**
+ * Timeline
+ */
+
+.c-schedule__timeline {
+    padding-top: 24px;
+}
+
+.c-schedule__timeline__section-container {
+    height: 80px;
+    position: relative;
+    width: 100%;
+}
+
+.c-schedule__timeline__ruler {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+
+.c-schedule__timeline__ruler div {
+    background-color: #c7c8ca;
+    height: 1px;
+}
+
+.c-schedule__timeline__ruler div:first-child {
+    width: 16px;
+}
+
+.c-schedule__timeline__ruler div:last-child {
+    background-color: transparent;
+}
+
+.c-schedule__timeline__label {
+    font-size: 14px;
+    left: 24px;
+    line-height: 14px;
+    position: absolute;
+    top: -7px;
+}
+
+.c-schedule__timeline__section {
+    border-top: 1px solid #c7c8ca;
+    height: 100%;
+    left: 76px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/**
+ * Meeting
+ */
+
+.c-schedule__meeting {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px rgba(0,0,0,.2), 0 3px 4px 1px rgba(0,0,0,.1);
+    height: 80px;
+    left: 16px;
+    overflow: hidden;
+    padding: 12px 0 0 20px;
+    position: absolute;
+    right: 64px;
+    top: 0;
+    z-index: 1;
+}
+
+.c-schedule__meeting--current {
+    background-color: #ffd1d6;
+    border: 1px solid #da1e33;
+    box-shadow: 0 0 0 4px rgba(218,30,51,.3);
+    height: 240px;
+}
+
+.c-schedule__meeting__time {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.c-schedule__meeting__originator,
+.c-schedule__meeting__title {
+    color: #3c3c3c;
+    font-size: 14px;
+    overflow: hidden;
+    padding-right: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/**
+ * Clock
+ */
+
+.c-schedule__clock {
+    color: #fff;
+    height: 22px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 320px;
+}
+
+.c-schedule__clock__line {
+    background-color: #107DFF;
+    bottom: 0;
+    height: 1px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.c-schedule__clock__time {
+    background-image: url("../assets/bg-current-time.svg");
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    height: 100%;
+    padding-left: 16px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    width: 88px;
+    z-index: 2;
+}
